@@ -219,13 +219,16 @@ def start_game():
             label1 = Label(text='Здорово! Вот тебе еще одна кнопка! :)', font=('Arial', 20), bg='black', fg='orange')
             label1.place(x=90, y=0, width=570, height=90)
 
-            def hack():
+            def hack_clear():
                 label1.forget()
                 but1.destroy()
                 yes_but.destroy()
                 no_but.destroy()
+
+            def hack():
+                hack_clear()
                 for i in range(100):
-                    leave_button = Button(text='ERROR', command=hack, font=('Arial', 22), bg='red', fg='black')
+                    leave_button = Button(text='ERROR', command=hack_clear, font=('Arial', 22), bg='red', fg='black')
                     leave_button.place(x=random.randint(1, 550), y=random.randint(1, 550), width=300, height=70)
 
             but1 = Button(text='Не жми на меня!', command=hack, font=('Arial', 13), bg='black', fg='red')
