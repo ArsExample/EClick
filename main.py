@@ -171,40 +171,16 @@ def hacked_description_game():
     label_text.place(x=200, y=0, width=300, height=90)
 
     def words4():
-        label_desc = Label(text='sL^&@% *K!*$*(%>* и 7 t@&)$ V#* *$*%!..5%#!',
-                           font=('Arial', 19), bg='black', fg='red')
-        label_desc.place(x=50, y=100, width=500, height=400)
-        continue_button = Button(text='D@!6E>', command=hacked_menu,
-                                 font=('Arial', 19),
-                                 fg='red', bg='black')
-        continue_button.place(x=40, y=450, width=200, height=70)
+        dialogue("sL^&@% *K!*$*(%>* и 7 t@&)$ V#* *$*%!..5%#!", hacked_menu, "D@!6E>", color="red")
 
     def words3():
-        label_desc = Label(text='Уp!&@%k?>%$ в ^@$E *%!?/0 8ы^($.',
-                           font=('Arial', 22), bg='black', fg='red')
-        label_desc.place(x=50, y=100, width=500, height=400)
-        continue_button = Button(text='D@!6E>', command=words4,
-                                 font=('Arial', 19),
-                                 fg='red', bg='black')
-        continue_button.place(x=40, y=450, width=200, height=70)
+        dialogue("Уp!&@%k?>%$ в ^@$E *%!?/0 8ы^($.", words4, "D@!6E>", color="red")
 
     def words2():
-        label_desc = Label(text='Вы u4@!t% ^#@* (&%#!?@")',
-                           font=('Arial', 22), bg='black', fg='red')
-        label_desc.place(x=50, y=100, width=500, height=400)
-        continue_button = Button(text='D@!6E>', command=words3,
-                                 font=('Arial', 19),
-                                 fg='red', bg='black')
-        continue_button.place(x=40, y=450, width=200, height=70)
+        dialogue("Вы u4@!t% ^#@* (&%#!?@)", words3, "D@!6E>", color="red")
 
     def words1():
-        label_desc = Label(text='П@#^t, +t0 я, s0!4#$^% игRы.',
-                           font=('Arial', 22), bg='black', fg='red')
-        label_desc.place(x=50, y=100, width=500, height=400)
-        continue_button = Button(text='D@!6E>', command=words2,
-                                 font=('Arial', 19),
-                                 fg='red', bg='black')
-        continue_button.place(x=40, y=450, width=200, height=70)
+        dialogue("П@#^t, +t0 я, s0!4#$^% игRы.", words2, "D@!6E>", color="red")
 
     words1()
 
@@ -391,7 +367,6 @@ def leave_game():
     window.quit()
 
 
-
-main_menu()
+hacked_menu()
 
 window.mainloop()
