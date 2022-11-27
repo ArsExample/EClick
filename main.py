@@ -33,9 +33,9 @@ def hacked_menu2():
         hacked_button3['text'] = 'Выйти из игры'
         help_but['text'] = 'Продолжить'
         help_but['bg'] = 'yellow'
-        help_but['command'] = goodbay
+        help_but['command'] = goodbye
 
-    def goodbay():
+    def goodbye():
         label_title['text'] = 'Cпасибо за помощь!'
         label_title1['text'] = 'Я пойду делать игру дальше и фиксить баги'
 
@@ -62,7 +62,6 @@ def hacked_menu2():
 
     help_but = Button(text='Починить цвет', command=change_but, font=('Arial', 22), bg='lime', fg='black')
     help_but.place(x=200, y=510, width=300, height=80)
-
 
 def void():
     label_fg = Label(bg='black')
