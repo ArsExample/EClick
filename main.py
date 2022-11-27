@@ -71,7 +71,7 @@ def void():
 
 
 def start_hacked_game():
-    def changes_color():
+    def main_menu_color_change():
         label_fg = Label(bg='black')
         label_fg.place(x=0, y=0, width=700, height=600)
 
@@ -81,13 +81,13 @@ def start_hacked_game():
         label_title1 = Label(text='Теперь пойдем починим главное меню!', font=('Arial', 22), bg='black', fg='orange')
         label_title1.place(x=0, y=200, width=700, height=90)
 
-        help_but = Button(text='Починить цвет', command=changes_color, font=('Arial', 22), bg='lime', fg='black')
+        help_but = Button(text='Починить цвет', command=main_menu_color_change, font=('Arial', 22), bg='lime', fg='black')
         help_but.destroy()
 
         cont_button = Button(text='В главное меню', command=hacked_menu2, font=('Arial', 22), bg='white', fg='black')
         cont_button.place(x=200, y=400, width=300, height=80)
 
-    def thank():
+    def thank_text():
         label_fg = Label(bg='black')
         label_fg.place(x=0, y=0, width=700, height=600)
         label_title = Label(text='Спасибо! Просто...', font=('Arial', 22), bg='black', fg='red')
@@ -100,10 +100,10 @@ def start_hacked_game():
                              fg='red')
         label_title2.place(x=0, y=200, width=700, height=90)
 
-        help_but = Button(text='Починить цвет', command=changes_color, font=('Arial', 22), bg='lime', fg='black')
+        help_but = Button(text='Починить цвет', command=main_menu_color_change, font=('Arial', 22), bg='lime', fg='black')
         help_but.place(x=200, y=400, width=300, height=80)
 
-    def quethion():
+    def question_about_broken_game():
         label_fg = Label(bg='black')
         label_fg.place(x=0, y=0, width=700, height=600)
 
@@ -113,7 +113,7 @@ def start_hacked_game():
         label_title2 = Label(text='Поможешь мне починить её??', font=('Arial', 22), bg='black', fg='red')
         label_title2.place(x=0, y=200, width=700, height=90)
 
-        yes_but = Button(text='Да', command=thank, font=('Arial', 22), bg='black', fg='red')
+        yes_but = Button(text='Да', command=thank_text, font=('Arial', 22), bg='black', fg='red')
         yes_but.place(x=120, y=450, width=200, height=80)
         no_but = Button(text='Нет', command=void, font=('Arial', 22), bg='black', fg='red')
         no_but.place(x=370, y=450, width=200, height=80)
@@ -121,7 +121,7 @@ def start_hacked_game():
         # help_but = Button(text = 'Починить игру', command = changes, font = ('Arial', 22), bg = 'lime', fg = 'black')
         # help_but.place(x = 200, y = 500, width = 300, height = 80)
 
-    quethion()
+    question_about_broken_game()
 
 
 def hacked_description_game():
@@ -132,7 +132,7 @@ def hacked_description_game():
     continue_button.place(x=40, y=450, width=200, height=70)
 
 
-def dont_leave_game():
+def leave_game_failed():
     label_title = Label(text='Не удалось совершить действие', font=('Arial', 30), bg='black', fg='red')
     label_title.place(x=0, y=0, width=700, height=90)
 
@@ -150,7 +150,7 @@ def hacked_menu():
     hacked_button2 = Button(text='+@ игре', command=hacked_description_game, font=('Arial', 22), bg='red', fg='black')
     hacked_button2.place(x=250, y=270, width=200, height=70)
 
-    hacked_button3 = Button(text='Выйти #* (гры', command=dont_leave_game, font=('Arial', 22), bg='red', fg='black')
+    hacked_button3 = Button(text='Выйти #* (гры', command=leave_game_failed, font=('Arial', 22), bg='red', fg='black')
     hacked_button3.place(x=250, y=390, width=200, height=70)
 
 
@@ -158,16 +158,16 @@ def start_game():
     label_fg = Label(bg='black')
     label_fg.place(x=0, y=0, width=700, height=600)
 
-    label_quethion = Label(text='Привет! Дать тебе кнопку?',
+    label_question = Label(text='Привет! Дать тебе кнопку?',
                            font=('Arial', 22),
                            bg='black', fg='orange')
-    label_quethion.place(x=150, y=0, width=400, height=90)
+    label_question.place(x=150, y=0, width=400, height=90)
 
     def yes_answer():
-        label_answ = Label(text='Ну ладно, держи)',
+        level_answer = Label(text='Ну ладно, держи)',
                            font=('Arial', 20),
                            bg='black', fg='orange')
-        label_answ.place(x=120, y=0, width=450, height=90)
+        level_answer.place(x=120, y=0, width=450, height=90)
         yes_but.destroy()
         no_but.destroy()
 
@@ -175,10 +175,10 @@ def start_game():
         red_but.place(x=220, y=200, width=250, height=250)
 
     def no_answer():
-        label_answ = Label(text='У тебя нет выбора (-_-)',
+        label_answer = Label(text='У тебя нет выбора (-_-)',
                            font=('Arial', 20),
                            bg='black', fg='orange')
-        label_answ.place(x=150, y=0, width=400, height=90)
+        label_answer.place(x=150, y=0, width=400, height=90)
         yes_but.destroy()
         no_but.destroy()
 
@@ -200,10 +200,10 @@ def start_game():
         clicks += 1
         points = Label(text=str(clicks), font=('Arial', 17), bg='black', fg='white')
         points.place(x=0, y=0, width=30, height=30)
-        label_answ = Label(text='Нажми на эту кнопку 30 раз!',
+        label_answer = Label(text='Нажми на эту кнопку 30 раз!',
                            font=('Arial', 20),
                            bg='black', fg='orange')
-        label_answ.place(x=150, y=0, width=400, height=90)
+        label_answer.place(x=150, y=0, width=400, height=90)
         if clicks >= 30:
             label1 = Label(text='Молодец! А сможешь нажать на неё 50 раз?',
                            font=('Arial', 20),
