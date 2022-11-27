@@ -1,7 +1,6 @@
 from tkinter import *
 import random
-import threading
-import time
+from modules import *
 
 window = Tk()
 WIDTH = 700
@@ -19,29 +18,30 @@ window.geometry('%dx%d+%d+%d' % (WIDTH, HEIGHT, x, y))
 clicks = 0
 
 
-def dialogue(text, cmd, continue_text="Дальше", color="green"):
-    label_desc = Label(text=text,
-                       font=('Arial', 22), bg='black', fg=color)
-    label_desc.place(x=50, y=100, width=500, height=400)
+def main_menu():
+    label_fg = Label(bg='black')
+    label_fg.place(x=0, y=0, width=700, height=600)
+    label_title = Label(text='EClick',
+                        font=('Arial', 40),
+                        bg='black', fg='orange')
+    label_title.place(x=200, y=0, width=300, height=90)
 
-    continue_button = Button(text=continue_text, command=cmd,
-                             font=('Arial', 19),
-                             fg=color, bg='black')
-    continue_button.place(x=40, y=450, width=200, height=70)
+    first_button = Button(text='Начать игру', command=lambda: start_game(first_button),
+                          font=('Arial', 22),
+                          bg='purple', fg='black')
+    first_button.place(x=250, y=150, width=200, height=70)
 
-def btn_blink(button, first_color, second_color):
-    stop = False
-    counter = 0
-    def blink():
-        while not stop:
-            if counter % 2 == 0:
-                button.cofigure(bg=first_color)
-            else:
-                button.congigure(bg=second_color)
-            time.sleep(1)
-    t1 = threading.Thread(target=blink)
-    t1.start()
+    btn_blink(first_button, "purple", "red", delay=0.5)
 
+    second_button = Button(text='Об игре', command=description_game,
+                           font=('Arial', 22),
+                           bg='purple', fg='black')
+    second_button.place(x=250, y=270, width=200, height=70)
+
+    third_button = Button(text='Выйти из игры', command=leave_game,
+                          font=('Arial', 22),
+                          bg='purple', fg='black')
+    third_button.place(x=250, y=390, width=200, height=70)
 
 def hacked_menu2():
     label_fg = Label(bg='black')
@@ -231,7 +231,8 @@ def hacked_menu():
     hacked_button3.place(x=250, y=390, width=200, height=70)
 
 
-def start_game():
+def start_game(btn):
+    btn.destroy()
     label_fg = Label(bg='black')
     label_fg.place(x=0, y=0, width=700, height=600)
 
@@ -241,7 +242,6 @@ def start_game():
     label_question.place(x=150, y=0, width=400, height=90)
 
     def yes_answer():
-        global clicks
         level_answer = Label(text='Ну ладно, держи)',
                            font=('Arial', 20),
                            bg='black', fg='orange')
@@ -249,11 +249,10 @@ def start_game():
         yes_but.destroy()
         no_but.destroy()
 
-        red_but = Button(bg='red', command=lambda: clicks + 1)
+        red_but = Button(bg='red', command=first_task)
         red_but.place(x=220, y=200, width=250, height=250)
 
     def no_answer():
-        global clicks
         label_answer = Label(text='У тебя нет выбора (-_-)',
                            font=('Arial', 20),
                            bg='black', fg='orange')
@@ -261,7 +260,7 @@ def start_game():
         yes_but.destroy()
         no_but.destroy()
 
-        red_but = Button(bg='red', command=lambda x: clicks + 1)
+        red_but = Button(bg='red', command=first_task)
         red_but.place(x=220, y=200, width=250, height=250)
 
     yes_but = Button(text='Да', command=yes_answer,
@@ -290,7 +289,7 @@ def start_game():
             label1.place(x=90, y=0, width=570, height=90)
             clicks2 = clicks - 30
             points['text'] = str(clicks2)
-            yellow_but = Button(text='Тык', font=('Arial', 24), bg='yellow', command=lambda x: clicks + 1)
+            yellow_but = Button(text='Тык', font=('Arial', 24), bg='yellow', command=first_task)
             yellow_but.place(x=220, y=200, width=250, height=250)
 
         if clicks >= 80:
@@ -391,29 +390,6 @@ def description_game():
 def leave_game():
     window.quit()
 
-
-def main_menu():
-    label_fg = Label(bg='black')
-    label_fg.place(x=0, y=0, width=700, height=600)
-    label_title = Label(text='EClick',
-                        font=('Arial', 40),
-                        bg='black', fg='orange')
-    label_title.place(x=200, y=0, width=300, height=90)
-
-    first_button = Button(text='Начать игру', command=start_game,
-                          font=('Arial', 22),
-                          bg='purple', fg='black')
-    first_button.place(x=250, y=150, width=200, height=70)
-
-    second_button = Button(text='Об игре', command=description_game,
-                           font=('Arial', 22),
-                           bg='purple', fg='black')
-    second_button.place(x=250, y=270, width=200, height=70)
-
-    third_button = Button(text='Выйти из игры', command=leave_game,
-                          font=('Arial', 22),
-                          bg='purple', fg='black')
-    third_button.place(x=250, y=390, width=200, height=70)
 
 
 main_menu()
