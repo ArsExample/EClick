@@ -3,9 +3,30 @@ import time
 import random
 
 window = Tk()
+WIDTH = 700
+HEIGHT = 600
 window.geometry('700x600')
 window.title('Clicker from Evandiy')
+window.resizable(False, False)
+ws = window.winfo_screenwidth()
+hs = window.winfo_screenheight()
+
+x = (ws/2) - (WIDTH/2)
+y = (hs/2) - (HEIGHT/2)
+
+window.geometry('%dx%d+%d+%d' % (WIDTH, HEIGHT, x, y))
 clicks = 0
+
+
+def dialogue(text, cmd, continue_text="Дальше", color="green"):
+    label_desc = Label(text=text,
+                       font=('Arial', 22), bg='black', fg=color)
+    label_desc.place(x=50, y=100, width=500, height=400)
+
+    continue_button = Button(text=continue_text, command=cmd,
+                             font=('Arial', 19),
+                             fg=color, bg='black')
+    continue_button.place(x=40, y=450, width=200, height=70)
 
 
 def hacked_menu2():
@@ -66,8 +87,13 @@ def hacked_menu2():
 def void():
     label_fg = Label(bg='black')
     label_fg.place(x=0, y=0, width=700, height=600)
-    label_title = Label(text='. . .', font=('Arial', 40), bg='black', fg='red')
+    label_title = Label(text='Блин, прийдется ждать кого-то другого :(', font=('Arial', 20), bg='black', fg='red')
     label_title.place(x=0, y=0, width=700, height=90)
+
+    continue_button = Button(text='Изменить решение', command=start_hacked_game,
+                             font=('Arial', 19),
+                             fg='red', bg='black')
+    continue_button.place(x=40, y=450, width=300, height=70)
 
 
 def start_hacked_game():
@@ -125,11 +151,48 @@ def start_hacked_game():
 
 
 def hacked_description_game():
-    label_title = Label(text='%;№;"*(№()№', font=('Arial', 40), bg='black', fg='red')
-    label_title.place(x=200, y=0, width=500, height=90)
+    label_text = Label(text='+@ игре:',
+                       font=('Arial', 40),
+                       bg='black', fg='red')
+    label_text.place(x=200, y=0, width=300, height=90)
 
-    continue_button = Button(text='В главное меню', command=hacked_menu, font=('Arial', 19), fg='red', bg='black')
-    continue_button.place(x=40, y=450, width=200, height=70)
+    def words4():
+        label_desc = Label(text='sL^&@% *K!*$*(%>* и 7 t@&)$ V#* *$*%!..5%#!',
+                           font=('Arial', 19), bg='black', fg='red')
+        label_desc.place(x=50, y=100, width=500, height=400)
+        continue_button = Button(text='D@!6E>', command=hacked_menu,
+                                 font=('Arial', 19),
+                                 fg='red', bg='black')
+        continue_button.place(x=40, y=450, width=200, height=70)
+
+    def words3():
+        label_desc = Label(text='Уp!&@%k?>%$ в ^@$E *%!?/0 8ы^($.',
+                           font=('Arial', 22), bg='black', fg='red')
+        label_desc.place(x=50, y=100, width=500, height=400)
+        continue_button = Button(text='D@!6E>', command=words4,
+                                 font=('Arial', 19),
+                                 fg='red', bg='black')
+        continue_button.place(x=40, y=450, width=200, height=70)
+
+    def words2():
+        label_desc = Label(text='Вы u4@!t% ^#@* (&%#!?@")',
+                           font=('Arial', 22), bg='black', fg='red')
+        label_desc.place(x=50, y=100, width=500, height=400)
+        continue_button = Button(text='D@!6E>', command=words3,
+                                 font=('Arial', 19),
+                                 fg='red', bg='black')
+        continue_button.place(x=40, y=450, width=200, height=70)
+
+    def words1():
+        label_desc = Label(text='П@#^t, +t0 я, s0!4#$^% игRы.',
+                           font=('Arial', 22), bg='black', fg='red')
+        label_desc.place(x=50, y=100, width=500, height=400)
+        continue_button = Button(text='D@!6E>', command=words2,
+                                 font=('Arial', 19),
+                                 fg='red', bg='black')
+        continue_button.place(x=40, y=450, width=200, height=70)
+
+    words1()
 
 
 def dont_leave_game():
@@ -243,7 +306,7 @@ def description_game():
     label_text.place(x=200, y=0, width=300, height=90)
 
     def words7():
-        label_desc = Label(text='made by Evandiy',
+        label_desc = Label(text='made by Evandiy\nupdated by ArsExample and frtem2008',
                            font=('Arial', 22), bg='black', fg='green')
         label_desc.place(x=50, y=100, width=500, height=400)
         continue_button = Button(text='В главное меню', command=main_menu,
