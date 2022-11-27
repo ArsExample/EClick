@@ -1,6 +1,7 @@
 from tkinter import *
-import time
 import random
+import threading
+import time
 
 window = Tk()
 WIDTH = 700
@@ -27,6 +28,19 @@ def dialogue(text, cmd, continue_text="Дальше", color="green"):
                              font=('Arial', 19),
                              fg=color, bg='black')
     continue_button.place(x=40, y=450, width=200, height=70)
+
+def btn_blink(button, first_color, second_color):
+    stop = False
+    counter = 0
+    def blink():
+        while not stop:
+            if counter % 2 == 0:
+                button.cofigure(bg=first_color)
+            else:
+                button.congigure(bg=second_color)
+            time.sleep(1)
+    t1 = threading.Thread(target=blink)
+    t1.start()
 
 
 def hacked_menu2():
@@ -227,6 +241,7 @@ def start_game():
     label_question.place(x=150, y=0, width=400, height=90)
 
     def yes_answer():
+        global clicks
         level_answer = Label(text='Ну ладно, держи)',
                            font=('Arial', 20),
                            bg='black', fg='orange')
@@ -234,10 +249,11 @@ def start_game():
         yes_but.destroy()
         no_but.destroy()
 
-        red_but = Button(bg='red', command=first_task)
+        red_but = Button(bg='red', command=lambda: clicks + 1)
         red_but.place(x=220, y=200, width=250, height=250)
 
     def no_answer():
+        global clicks
         label_answer = Label(text='У тебя нет выбора (-_-)',
                            font=('Arial', 20),
                            bg='black', fg='orange')
@@ -245,7 +261,7 @@ def start_game():
         yes_but.destroy()
         no_but.destroy()
 
-        red_but = Button(bg='red', command=first_task)
+        red_but = Button(bg='red', command=lambda x: clicks + 1)
         red_but.place(x=220, y=200, width=250, height=250)
 
     yes_but = Button(text='Да', command=yes_answer,
@@ -274,7 +290,7 @@ def start_game():
             label1.place(x=90, y=0, width=570, height=90)
             clicks2 = clicks - 30
             points['text'] = str(clicks2)
-            yellow_but = Button(text='Тык', font=('Arial', 24), bg='yellow', command=first_task)
+            yellow_but = Button(text='Тык', font=('Arial', 24), bg='yellow', command=lambda x: clicks + 1)
             yellow_but.place(x=220, y=200, width=250, height=250)
 
         if clicks >= 80:
@@ -286,6 +302,7 @@ def start_game():
                 but1.destroy()
                 yes_but.destroy()
                 no_but.destroy()
+                yellow_but.destroy()
 
             def hack():
                 hack_clear()
